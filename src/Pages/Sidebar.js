@@ -1,11 +1,9 @@
 import React from 'react'
 import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
     Link
   } from "react-router-dom"
 
+  // Style Links properly
 
 export default function  Sidebar(){
     return(
@@ -14,6 +12,7 @@ export default function  Sidebar(){
                 <ul>
                     <li>
                         <Link to="/">Home</Link>
+                        
                     </li>
                     <li>
                         <Link to="/newRecipe">New Recipe</Link>
