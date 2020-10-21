@@ -4,13 +4,7 @@
     margin-top: 0px;
 }
 
-a {
-    text-decoration: none;
-    color: black;
-}
-a:visited {
-    text-decoration: none;
-}
+
 
 #profile{
     margin-left: 2em;
@@ -30,8 +24,7 @@ a:visited {
 }
 
 
-
-
+/* Search input form */
 form > input {
     min-width: 500px;
     font-size: 35px;
@@ -48,4 +41,8 @@ form > button {
     border-radius: 0px 15px 15px 0px;
     width: 45px;
     float: left;
+}
+
+form > button > i {
+    font-size: 20px;
 }

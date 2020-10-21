@@ -7,13 +7,14 @@ import "./Navbar.css"
 export default function  Navbar(){
     return(
         <div className="Container-Navbar">
+            
             <Link to="/profile" id="profile">
                 <h5>ProfileName</h5>
             </Link>
             <Link to="/searchResults" id="searchResults">
                 <form>
                     <input type="text" placeholder="Search" name="search"></input>
-                    <button></button>
+                    <button><i className="ri-search-line"></i></button>
                 </form>
             </Link>
             <Link to="/signIn" id="signIn">
