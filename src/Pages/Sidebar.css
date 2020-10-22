@@ -1,0 +1,19 @@
+#Home > i {
+    font-size: 32px;
+}
+
+#NewRecipe > i {
+    font-size: 32px;
+}
+
+#Profile > i {
+    font-size: 32px;
+}
+
+li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    margin-top: 20px;
+}
