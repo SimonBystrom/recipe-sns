@@ -8,6 +8,8 @@ import './App.css';
 import Navbar from './Pages/Navbar'
 import Sidebar from './Pages/Sidebar'
 
+import SearchItem from "./Search/SearchItem"
+
 // add login page conditional rendering
 function App() {
   return (
@@ -22,6 +24,7 @@ function App() {
           <Switch>
             <Route path="/searchResults">
               <h1>Search</h1>
+              <SearchItem></SearchItem>
             </Route>
             <Route path="/profile">
               <h1>Profile</h1>

@@ -1,0 +1,36 @@
+.SearchItemContainer{
+    width: 300px;
+    display: grid;
+    grid-template-areas: "img" 
+                        "description"
+                        "author";
+    grid-template-columns: 1fr;
+    grid-template-rows: 300px 50px 40px;
+
+    border: 5px solid black;
+}
+
+.SearchItemImg{
+    grid-area: img;
+    background-color: red;
+}
+
+
+.SearchItemDescription{
+    grid-area: description;
+    background-color: yellow;
+}
+
+.SearchItemDescription > h5 {
+    margin: 0;
+}
+
+
+.Author{
+    grid-area: author;
+    background-color: green;
+}
+
+.Author > p {
+    margin: 0;
+}
