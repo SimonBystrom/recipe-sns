@@ -8,8 +8,10 @@ import './App.css';
 import Navbar from './Pages/Navbar'
 import Sidebar from './Pages/Sidebar'
 
-import SearchItem from "./Search/SearchItem"
+import SearchResults from "./Search/SearchResults"
 
+
+// fix so nav and side is position fixed (maybe ditch the grid?)
 // add login page conditional rendering
 function App() {
   return (
@@ -24,7 +26,7 @@ function App() {
           <Switch>
             <Route path="/searchResults">
               <h1>Search</h1>
-              <SearchItem></SearchItem>
+              <SearchResults />
             </Route>
             <Route path="/profile">
               <h1>Profile</h1>

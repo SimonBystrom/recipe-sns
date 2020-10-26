@@ -9,10 +9,10 @@ export default function SearchItem(props){
                 <img src={props.img}></img>
             </div>
             <div className="SearchItemDescription">
-                <h5>Description{props.Description}</h5>
+                <h5>Description{props.description}</h5>
             </div>
             <div className="Author">
-                <p>By: {props.Author}</p>
+                <p>By: {props.author}</p>
             </div>
         </div>
     )

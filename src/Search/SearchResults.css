@@ -1,0 +1,10 @@
+.SearchResultsContainer {
+    
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-rows: auto;
+    grid-gap: 30px;
+    margin-left: 50px;
+    margin-right: 10px;
+    
+}
