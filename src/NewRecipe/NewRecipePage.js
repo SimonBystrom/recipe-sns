@@ -6,6 +6,8 @@ import IngredientsForm from './IngredientsForm'
 import RecipeDescription from './RecipeDescription'
 import RecipePicture from './RecipePicture'
 
+import "./NewRecipe.css"
+
 
 // NEEDS
 
@@ -43,25 +45,39 @@ export default function NewRecipePage(){
 
 
     return(
-        <div>
-            <RecipePicture
-                changePicture={changePicture}
-            />
-            <RecipeName
-                changeRecipeName={changeRecipeName} 
-                changeAuthorName={changeAuthor}
-                recipeName={recipeName}
-                author={author}
-            />
-            <IngredientsForm 
-                changeIngredients={changeIngredients}
-                ingredients={ingredients}
-            />
-            <RecipeDescription 
-                changeDescription={changeDescription}
-                description={description}
-            />
-            <button>Save</button>
+        <div className="NewRecipeContainer">
+            <div className="RecipeName">
+                <RecipeName
+                    
+                    changeRecipeName={changeRecipeName} 
+                    changeAuthorName={changeAuthor}
+                    recipeName={recipeName}
+                    author={author}
+                />
+            </div>
+            <div className="RecipePicture">
+                <RecipePicture
+                    
+                    changePicture={changePicture}
+                />
+            </div>
+            <div className="RecipeIngredients">
+                <IngredientsForm 
+                    
+                    changeIngredients={changeIngredients}
+                    ingredients={ingredients}
+                />
+            </div>
+            <div className="RecipeDescription">
+                <RecipeDescription 
+                    
+                    changeDescription={changeDescription}
+                    description={description}
+                />
+            </div>
+            <button
+            className="SaveRecipeButton"
+            >Save</button>
            
         </div>
     )

@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import './RecipePicture.css'
 
 
 export default function PictureUpload(props){
@@ -13,9 +14,12 @@ export default function PictureUpload(props){
     }
 
     return (
-        <div>
-            {imgSource ? <img width="200px" height="200px"src={imgSource}></img> : null}
-            <input type="file" onChange={handleChange}></input>
+        <div className="PictureUploadContainer">
+            {imgSource ? <img src={imgSource}></img> : null}
+            <label for="pictureUpload"className="FileUploadButton">
+                <i className="ri-add-line"></i>
+            </label>
+            <input id="pictureUpload" type="file" onChange={handleChange}></input>
         </div>
     )
 }

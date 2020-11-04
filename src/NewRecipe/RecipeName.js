@@ -23,14 +23,6 @@ export default function RecipeNameForm(props){
                 onChange={recipeNameChange}
                 placeholder="Recipe Name"
             />
-            <h6>by</h6>
-            <input
-                type="text"
-                name="author"
-                value={author}
-                onChange={authorNameChange}
-                placeholder="Author"
-            />
         </form>
         
         

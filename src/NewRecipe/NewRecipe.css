@@ -1,0 +1,37 @@
+.NewRecipeContainer{
+    margin: 5em 4em 0 6em;
+    background-color: red;
+    height: 100%;
+    display: grid;
+    grid-template-areas: "Name Name ."
+                        "Pic Ingredients Description"
+                        ". . Save";
+    grid-template-rows: 70px 1fr 40px;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 20px;
+}
+
+.RecipeName {
+    grid-area: Name;
+    background-color: green;
+}
+
+.RecipePicture {
+    grid-area: Pic;
+    background-color: pink;
+}
+
+.RecipeIngredients {
+    grid-area: Ingredients;
+    background-color: purple;
+}
+
+.RecipeDescription {
+    grid-area: Description;
+    background-color: orange;
+}
+
+.SaveRecipeButton{
+    grid-area: Save;
+    background-color: teal;
+}
