@@ -9,6 +9,7 @@ import Navbar from './Navigation/Navbar'
 import Sidebar from './Navigation/Sidebar'
 
 import SearchResults from "./Search/SearchResults"
+import NewRecipePage from "./NewRecipe/NewRecipePage"
 
 
 // fix so nav and side is position fixed (maybe ditch the grid?)
@@ -32,7 +33,7 @@ function App() {
               <h1>Profile</h1>
             </Route>
             <Route path="/newRecipe">
-              <h1>New Recipe</h1>
+              <NewRecipePage/>
             </Route>
             <Route path="/">
               <h1>home</h1>

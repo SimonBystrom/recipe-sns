@@ -13,7 +13,7 @@ export default function  Navbar(){
             </Link>
             <Link to="/searchResults" id="searchResults">
                 <form>
-                    <input type="text" placeholder="Search" name="search"></input>
+                    <input type="text" placeholder="Search" name="search" id="searchInput"></input>
                     <button><i className="ri-search-line"></i></button>
                 </form>
             </Link>
