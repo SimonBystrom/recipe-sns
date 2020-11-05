@@ -1,4 +1,5 @@
 import React from 'react'
+import './IngredientsForm.css'
 
 export default function IngredientsForm(props){
 
@@ -29,11 +30,15 @@ export default function IngredientsForm(props){
     
 
     return(
-        <div>
+        <div
+        className="IngredientFormContainer">
             {ingredients.map((x, i) => {
                 return(
-                    <div key={i}>
+                    <div 
+                    className="IngredientItem"
+                    key={i}>
                         <input
+                            className="ingredientInput"
                             type="text"
                             name="ingredient"
                             value={x.ingredient}
@@ -42,6 +47,7 @@ export default function IngredientsForm(props){
                             }
                         />
                         <input
+                            className="ingredientInputAmount"
                             type="text"
                             name="amount"
                             value={x.amount}
@@ -50,16 +56,23 @@ export default function IngredientsForm(props){
                         />
                     
                             {ingredients.length !== 1 && 
+                           
                                 <button
+                                    className="ingredientButton"
                                     onClick={() => removeInputField(i)}
-                                >Remove</button>}
+                                ><i className="ri-close-circle-line"></i>
+                                </button>
+                         
+                                }
                         
                     </div>
                    
                 )
             }
             )}
-            <button onClick={addNewInput}>Add</button>
+            <button className="ingredientButton add" onClick={addNewInput}>
+                <i className="ri-add-circle-line"></i>
+            </button>
         </div>
     )
 }

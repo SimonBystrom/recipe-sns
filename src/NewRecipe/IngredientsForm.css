@@ -1,0 +1,51 @@
+.IngredientFormContainer{
+    width: 400px;
+    background-color: green;
+    height: 400px;
+    margin: 1em 1em 1em 1em;
+    border: 2px solid black;
+    border-radius: 20px;
+
+}
+
+.IngredientItem {
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    /* justify-content: center; */
+}
+
+.ingredientInput{
+    border-radius: 4px;
+    width: 60%;
+    font-size: 20px;
+    margin: 10px 5px 0px 20px;
+}
+
+.ingredientInputAmount {
+    width: 20px;
+    font-size: 20px;
+    margin-top: 10px;
+}
+
+.ingredientButton{
+   border: none;
+   padding: none;
+   color: inherit;
+   background: none;
+   margin-top: 10px;
+}
+
+.ingredientButton:focus {
+    outline: none;
+}
+
+
+.ingredientButton > i{  
+    font-size: 35px;
+}
+
+.ingredientButton.add > i{  
+    font-size: 35px;
+    margin-left: 15px;
+}

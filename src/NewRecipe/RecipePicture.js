@@ -16,7 +16,7 @@ export default function PictureUpload(props){
     return (
         <div className="PictureUploadContainer">
             {imgSource ? <img src={imgSource}></img> : null}
-            <label for="pictureUpload"className="FileUploadButton">
+            <label for="pictureUpload" className="FileUploadButton">
                 <i className="ri-add-line"></i>
             </label>
             <input id="pictureUpload" type="file" onChange={handleChange}></input>

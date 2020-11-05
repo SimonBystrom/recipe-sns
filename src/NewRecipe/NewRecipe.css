@@ -1,6 +1,6 @@
 .NewRecipeContainer{
     margin: 5em 4em 0 6em;
-    background-color: red;
+    background-color: white;
     height: 100%;
     display: grid;
     grid-template-areas: "Name Name ."
@@ -13,17 +13,17 @@
 
 .RecipeName {
     grid-area: Name;
-    background-color: green;
+    background-color: white;
 }
 
 .RecipePicture {
     grid-area: Pic;
-    background-color: pink;
+    background-color: white;
 }
 
 .RecipeIngredients {
     grid-area: Ingredients;
-    background-color: purple;
+    background-color: green;
 }
 
 .RecipeDescription {

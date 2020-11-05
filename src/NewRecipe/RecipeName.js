@@ -1,4 +1,5 @@
-import React, {useState} from 'react'
+import React from 'react'
+import "./RecipeName.css"
 
 export default function RecipeNameForm(props){
 
@@ -15,13 +16,13 @@ export default function RecipeNameForm(props){
 
     return (
         
-        <form>
+        <form className="RecipeNameContainer">
             <input
                 type="text"
                 name="recipeName"
                 value={recipeName}
                 onChange={recipeNameChange}
-                placeholder="Recipe Name"
+                placeholder="New Recipe"
             />
         </form>
         

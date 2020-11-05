@@ -1,0 +1,14 @@
+.RecipeNameContainer > input {
+    font-size: 50px;
+    padding-left: 20px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: black 2px solid;
+    width: 90%;
+    height: 65px;
+}
+
+.RecipeNameContainer > input:focus {
+    outline: none;
+}
