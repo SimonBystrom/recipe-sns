@@ -1,0 +1,22 @@
+.RecipeDescriptionContainer{
+    width: 1fr;
+    height: 400px;
+    margin: 1em 1em 1em 1em;
+   
+    border-radius: 20px;
+}
+
+.RecipeDescriptionContainer > textarea {
+    width: 91%;
+    height: 91%;
+    border: 2px solid black;
+    resize: none;
+    border-radius: 22px;
+    font-size: 22px;
+    padding: 18px;
+
+}
+
+.RecipeDescriptionContainer > textarea:focus {
+    outline: none;
+}

@@ -1,4 +1,5 @@
 import React from 'react'
+import "./RecipeDescription.css"
 
 export default function RecipeDescription(props){
 
@@ -9,8 +10,9 @@ export default function RecipeDescription(props){
    }
 
     return(
-        <div>
+        <div className="RecipeDescriptionContainer">
             <textarea
+                
                 name="description"
                 value={description}
                 onChange={handleChange}

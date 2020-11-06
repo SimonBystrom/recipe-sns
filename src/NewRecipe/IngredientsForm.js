@@ -32,7 +32,7 @@ export default function IngredientsForm(props){
     return(
         <div
         className="IngredientFormContainer">
-            {ingredients.map((x, i) => {
+            {ingredients.map((item, i) => {
                 return(
                     <div 
                     className="IngredientItem"
@@ -41,7 +41,7 @@ export default function IngredientsForm(props){
                             className="ingredientInput"
                             type="text"
                             name="ingredient"
-                            value={x.ingredient}
+                            value={item.ingredient}
                             placeholder="Enter Ingredient"
                             onChange={e => addIngredientToList(e, i)
                             }
@@ -50,7 +50,7 @@ export default function IngredientsForm(props){
                             className="ingredientInputAmount"
                             type="text"
                             name="amount"
-                            value={x.amount}
+                            value={item.amount}
                             placeholder="Enter Amount"
                             onChange={e => addIngredientToList(e, i)}
                         />

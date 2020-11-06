@@ -23,12 +23,12 @@
 
 .RecipeIngredients {
     grid-area: Ingredients;
-    background-color: green;
+    background-color: white;
 }
 
 .RecipeDescription {
     grid-area: Description;
-    background-color: orange;
+    background-color: white;
 }
 
 .SaveRecipeButton{

@@ -1,6 +1,5 @@
 .IngredientFormContainer{
-    width: 400px;
-    background-color: green;
+    width: 1fr;
     height: 400px;
     margin: 1em 1em 1em 1em;
     border: 2px solid black;
@@ -23,7 +22,7 @@
 }
 
 .ingredientInputAmount {
-    width: 20px;
+    width: 50px;
     font-size: 20px;
     margin-top: 10px;
 }
