@@ -7,6 +7,7 @@
 
 }
 
+
 .IngredientItem {
     display:flex;
     flex-direction: row;
@@ -18,13 +19,13 @@
     border-radius: 4px;
     width: 60%;
     font-size: 20px;
-    margin: 10px 5px 0px 20px;
+    margin: 12px 5px 0px 20px;
 }
 
 .ingredientInputAmount {
     width: 50px;
     font-size: 20px;
-    margin-top: 10px;
+    margin-top: 12px;
 }
 
 .ingredientButton{
@@ -32,7 +33,7 @@
    padding: none;
    color: inherit;
    background: none;
-   margin-top: 10px;
+   margin-top: 12px;
 }
 
 .ingredientButton:focus {
@@ -41,10 +42,10 @@
 
 
 .ingredientButton > i{  
-    font-size: 35px;
+    font-size: 33px;
 }
 
 .ingredientButton.add > i{  
-    font-size: 35px;
+    font-size: 33px;
     margin-left: 15px;
 }

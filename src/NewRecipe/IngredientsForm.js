@@ -32,6 +32,7 @@ export default function IngredientsForm(props){
     return(
         <div
         className="IngredientFormContainer">
+            
             {ingredients.map((item, i) => {
                 return(
                     <div 

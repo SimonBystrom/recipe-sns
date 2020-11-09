@@ -11,6 +11,12 @@
     grid-gap: 20px;
 }
 
+.NewRecipeContainer > div > h3{
+    font-size: 20px;
+    margin: 0.7em 0 0.3em 0;
+    text-align: center;
+}
+
 .RecipeName {
     grid-area: Name;
     background-color: white;

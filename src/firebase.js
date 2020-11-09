@@ -2,7 +2,7 @@ import firebase from 'firebase/app'
 import 'firebase/auth'
 import 'firebase/firestore'
 
-const firebaseConfig = {
+export const firebaseConfig = {
     apiKey: "AIzaSyDZJ9NtVq0JmJ6vRr-EXto-1hfW4Ji2lRA",
     authDomain: "recipe-sns.firebaseapp.com",
     databaseURL: "https://recipe-sns.firebaseio.com",
@@ -14,5 +14,6 @@ const firebaseConfig = {
   };
 
 firebase.initializeApp(firebaseConfig);
+
 export const auth = firebase.auth();
 export const firestore = firebase.firestore();

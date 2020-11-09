@@ -11,6 +11,7 @@ export default function RecipeDescription(props){
 
     return(
         <div className="RecipeDescriptionContainer">
+          
             <textarea
                 
                 name="description"

@@ -48,7 +48,6 @@ export default function NewRecipePage(){
         <div className="NewRecipeContainer">
             <div className="RecipeName">
                 <RecipeName
-                    
                     changeRecipeName={changeRecipeName} 
                     changeAuthorName={changeAuthor}
                     recipeName={recipeName}
@@ -56,21 +55,21 @@ export default function NewRecipePage(){
                 />
             </div>
             <div className="RecipePicture">
+                <h3>Picture</h3>
                 <RecipePicture
-                    
                     changePicture={changePicture}
                 />
             </div>
             <div className="RecipeIngredients">
+                <h3>Ingredients</h3>
                 <IngredientsForm 
-                    
                     changeIngredients={changeIngredients}
                     ingredients={ingredients}
                 />
             </div>
             <div className="RecipeDescription">
+                <h3>Description</h3>
                 <RecipeDescription 
-                    
                     changeDescription={changeDescription}
                     description={description}
                 />
