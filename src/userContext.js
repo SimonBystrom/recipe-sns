@@ -1,32 +1,44 @@
 import React, {createContext, useState, useEffect} from 'react'
 import {auth} from './firebase'
 
-const UserContext = createContext()
+ const UserContext = createContext()
 
-function ContextProvider({children}){
+function UserProvider({children}){
     const [isSignedIn, setIsSignedIn] = useState(undefined)
-    const [userName, setUserName] = useState()
+    const [userName, setUserName] = useState(null)
+    const [userEmail, setUserEmail] = useState(null)
+    const [userPhotoUrl, setUserPhotoUrl] = useState(null)
 
     useEffect(
         ()=> { 
             auth.onAuthStateChanged((user) => {
+                if(user){
                 setIsSignedIn(!!user)
-                setUserName(auth.currentUser.displayName)
-            })
+                setUserName(user.displayName)
+                setUserEmail(user.email)
+                setUserPhotoUrl(user.photoURL)
+
+                } else  {
+                    setUserName(null)
+                    setUserEmail(null)
+                    setUserPhotoUrl(null)
+                }
+            }
+            )
         });
 
-    
+       
 
     return(
-    <ContextProvider
+    <UserContext.Provider
         value={ {
             isSignedIn,
-            userName
+            user: {userName, userEmail, userPhotoUrl}
         }
     }>
         {children}
-    </ContextProvider>
+    </UserContext.Provider>
     )
 }
 
-export {ContextProvider, UserContext}
+export  {UserProvider, UserContext}

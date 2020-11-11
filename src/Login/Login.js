@@ -10,8 +10,8 @@ import {auth} from '../firebase'
 const uiConfig = {
     // Popup signin flow rather than redirect flow.
     signInFlow: 'popup',
-    // Redirect to /signedIn after sign in is successful. Alternatively you can provide a callbacks.signInSuccess function.
-    signInSuccessUrl: '/login',
+    // Redirect to /profile after sign in is successful. Alternatively you can provide a callbacks.signInSuccess function.
+    signInSuccessUrl: '/profile',
     // We will display Google and Email as auth providers.
     signInOptions: [
       firebase.auth.GoogleAuthProvider.PROVIDER_ID,
@@ -21,14 +21,12 @@ const uiConfig = {
 
 
   export default function LoginTest(){
-   
     const [isSignedIn, setIsSignedIn] = useState(undefined)
 
-    // checks if user state has changed (current user logged in or not) through an observer on the firebase.auth()
+    // // checks if user state has changed (current user logged in or not) through an observer on the firebase.auth()
     useEffect(
         ()=> { 
             auth.onAuthStateChanged((user) => setIsSignedIn(!!user))
-            console.log(isSignedIn)
         });
 
     return (
