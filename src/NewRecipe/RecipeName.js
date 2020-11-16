@@ -1,5 +1,5 @@
 import React from 'react'
-import "./RecipeName.css"
+import "./css/RecipeName.css"
 
 export default function RecipeNameForm(props){
 
@@ -7,12 +7,7 @@ export default function RecipeNameForm(props){
         props.changeRecipeName(e.target.value)
     }
 
-    function authorNameChange(e){
-        props.changeAuthorName(e.target.value)
-    }
-    
     const recipeName = props.recipeName
-    const author = props.author
 
     return (
         

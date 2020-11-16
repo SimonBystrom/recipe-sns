@@ -1,5 +1,5 @@
 import React from 'react'
-import './IngredientsForm.css'
+import './css/IngredientsForm.css'
 
 export default function IngredientsForm(props){
 

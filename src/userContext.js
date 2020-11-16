@@ -8,6 +8,7 @@ function UserProvider({children}){
     const [userName, setUserName] = useState(null)
     const [userEmail, setUserEmail] = useState(null)
     const [userPhotoUrl, setUserPhotoUrl] = useState(null)
+    const [userID, setUserID] = useState(null)
 
     useEffect(
         ()=> { 
@@ -17,11 +18,13 @@ function UserProvider({children}){
                 setUserName(user.displayName)
                 setUserEmail(user.email)
                 setUserPhotoUrl(user.photoURL)
+                setUserID(user.uid)
 
                 } else  {
                     setUserName(null)
                     setUserEmail(null)
                     setUserPhotoUrl(null)
+                    setUserID(null)
                 }
             }
             )
@@ -33,7 +36,7 @@ function UserProvider({children}){
     <UserContext.Provider
         value={ {
             isSignedIn,
-            user: {userName, userEmail, userPhotoUrl}
+            user: {userName, userEmail, userPhotoUrl, userID}
         }
     }>
         {children}

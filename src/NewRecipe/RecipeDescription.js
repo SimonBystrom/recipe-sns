@@ -1,5 +1,5 @@
 import React from 'react'
-import "./RecipeDescription.css"
+import "./css/RecipeDescription.css"
 
 export default function RecipeDescription(props){
 

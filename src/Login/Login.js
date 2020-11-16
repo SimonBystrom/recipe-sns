@@ -1,10 +1,9 @@
 import React, {useState, useEffect} from 'react'
 import firebase from 'firebase'
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth'
-import {auth} from '../firebase'
+import {auth, firestore} from '../firebase'
 
 
-   //ADD this state and useEffect to context for multiple componenets to use (DON'T Repeat code)
 
 // Configure FirebaseUI.
 const uiConfig = {
@@ -20,7 +19,7 @@ const uiConfig = {
   }
 
 
-  export default function LoginTest(){
+  export default function Login(){
     const [isSignedIn, setIsSignedIn] = useState(undefined)
 
     // // checks if user state has changed (current user logged in or not) through an observer on the firebase.auth()
@@ -29,6 +28,7 @@ const uiConfig = {
             auth.onAuthStateChanged((user) => setIsSignedIn(!!user))
         });
 
+    
     return (
         <div>
             {isSignedIn !== undefined && !isSignedIn &&

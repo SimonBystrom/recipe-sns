@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import './RecipePicture.css'
+import './css/RecipePicture.css'
 
 
 export default function PictureUpload(props){
