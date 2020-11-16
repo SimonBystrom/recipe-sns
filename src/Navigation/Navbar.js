@@ -1,6 +1,6 @@
 import React,{useContext} from 'react'
 import {Link} from 'react-router-dom'
-import "./Navbar.css"
+import "./css/Navbar.css"
 import {auth} from '../firebase'
 
 import {UserContext} from '../userContext'
