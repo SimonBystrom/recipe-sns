@@ -43,7 +43,7 @@ export default function NewRecipePage(){
     }   
 
 
-    // saves
+    // saves recipe and profile data to the firestore 
     function saveData(){
         const recipe = recipeName
         const author = user.userName
