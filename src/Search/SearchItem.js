@@ -1,5 +1,5 @@
 import React from "react"
-import "./SearchItem.css"
+import "./css/SearchItem.css"
 
 export default function SearchItem(props){
 

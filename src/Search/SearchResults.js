@@ -1,5 +1,5 @@
 import React from 'react'
-import "./SearchResults.css"
+import "./css/SearchResults.css"
 import SearchItem from "./SearchItem"
 
 // When searchQuery is built, make it work

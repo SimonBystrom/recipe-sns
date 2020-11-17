@@ -20,9 +20,6 @@ export default function  Navbar(){
         <div className="Container-Navbar">
            
             <Link to="/profile" id="profile">
-                {console.log(user.userName)}
-                {console.log(user.userEmail)}
-                {console.log(isSignedIn)}
             {!isSignedIn && <h5>User</h5>}
             {isSignedIn && <h5>{user.userName}</h5>}
                 

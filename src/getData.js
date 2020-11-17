@@ -1,11 +1,11 @@
-import {firestore} from "./firebase"
+import {firestore, auth} from "./firebase"
 
 
 
 // update this to be used for query for searches
 export function getRecipeData(){
 
-    let recipeDataArr = []
+    let recipeDataArr;
 
     firestore.collection("recipe").get()
     .then((querySnapshot) => {
@@ -21,15 +21,15 @@ export function getRecipeData(){
 
 
 
-export function getUserRecipeData(user){
-    let userRecipeArr = []
-
-    firestore.collection("users").doc(user).collection("recipes").get()
-    .then((querySnapshot) => {
-        querySnapshot.forEach((dataPoint) => {
-            userRecipeArr.push(dataPoint.data())
-        })
-    })
-    console.log(userRecipeArr)
-    return userRecipeArr
+export async function getUserRecipeData(userID){
+ 
+    
+    const recipeArr = []
+      await firestore.collection("users").doc(userID).collection("recipes").get()
+      .then(querySnapshot => {
+          querySnapshot.forEach(dataPoint => {
+              recipeArr.push(dataPoint.data())
+          })
+      })
+    return recipeArr
 }
