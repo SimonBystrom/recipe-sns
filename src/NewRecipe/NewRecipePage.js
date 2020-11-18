@@ -10,7 +10,7 @@ import RecipePicture from './RecipePicture'
 import "./css/NewRecipe.css"
 
 
-// fix so adding a picture works (saves to storage and links said picture url)
+// fix so adding a picture works (saves to storage and links said picture url)!! 
 
 
 export default function NewRecipePage(){

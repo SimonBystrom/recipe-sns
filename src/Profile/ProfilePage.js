@@ -17,7 +17,7 @@ import {getUserRecipeData} from "../getData"
 
 export default function ProfilePage(){
     const {isSignedIn, user} = useContext(UserContext)
-    const [userRecipes, setUserRecipes] = useState()
+    const [userRecipes, setUserRecipes] = useState([])
 
 
    useAsync(async () => {
@@ -25,10 +25,12 @@ export default function ProfilePage(){
             setUserRecipes(userRecipesResults)
    },[user.userID])
     
-   
+    let AccountRecipesTest = userRecipes.map(item => <p key={item.RecipeName}>{item.RecipeName}</p>)
+
+
+
     return(
         <div>
-           
             {!isSignedIn && 
                 <div>
                     <h3>Not signed in</h3>
@@ -40,9 +42,10 @@ export default function ProfilePage(){
                 <h5>Email: {user.userEmail}</h5>
                 <h2>Your Recipes</h2>
                 <AccountRecipes />
+                {AccountRecipesTest}
                 <h2>Liked Recipes</h2>
                 <LikedRecipes />
-                {userRecipes === undefined ? "still poop" : console.log(userRecipes)}
+                
             </div>
             }
         </div>
