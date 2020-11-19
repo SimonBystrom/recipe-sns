@@ -5,6 +5,7 @@ import LikedRecipes from "./LikedRecipes"
 import {UserContext} from '../userContext'
 
 import {getUserRecipeData} from "../getData"
+import {storage} from '../firebase'
 
 /* 
     NEEDS:
@@ -24,10 +25,25 @@ export default function ProfilePage(){
         const userRecipesResults =  await getUserRecipeData(user.userID)
             setUserRecipes(userRecipesResults)
    },[user.userID])
-    
-    let AccountRecipesTest = userRecipes.map(item => <p key={item.RecipeName}>{item.RecipeName}</p>)
 
-
+// Maps over userRecipes Array and renders AccountRecipes with values from Array
+   let accountRecipeRender = () => {
+       if(userRecipes.length > 0) {
+           return userRecipes.map(item => {
+               return (
+               <AccountRecipes 
+                    Image={item.Image}
+                    Author={item.Author}
+                    Description={item.Description}
+                    Ingredients={item.Ingredients}
+                    RecipeName={item.RecipeName}
+                    Key={10000 * Math.random()}
+               ></AccountRecipes>)
+           })
+       } else {
+           return <p>Loading...</p>
+       }
+   }
 
     return(
         <div>
@@ -41,8 +57,8 @@ export default function ProfilePage(){
                 <h1>Hello {user.userName}</h1>
                 <h5>Email: {user.userEmail}</h5>
                 <h2>Your Recipes</h2>
-                <AccountRecipes />
-                {AccountRecipesTest}
+                {accountRecipeRender()}
+                {}
                 <h2>Liked Recipes</h2>
                 <LikedRecipes />
                 

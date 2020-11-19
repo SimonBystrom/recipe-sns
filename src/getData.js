@@ -1,4 +1,4 @@
-import {firestore, auth} from "./firebase"
+import {firestore, storage} from "./firebase"
 
 
 
@@ -23,7 +23,7 @@ export function getRecipeData(){
 
 export async function getUserRecipeData(userID){
  
-    
+  
     const recipeArr = []
       await firestore.collection("users").doc(userID).collection("recipes").get()
       .then(querySnapshot => {
@@ -31,5 +31,8 @@ export async function getUserRecipeData(userID){
               recipeArr.push(dataPoint.data())
           })
       })
+      
+    
+    
     return recipeArr
 }

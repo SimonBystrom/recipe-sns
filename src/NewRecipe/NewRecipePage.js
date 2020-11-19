@@ -1,6 +1,6 @@
 import React, {useState, useContext} from 'react'
 import {UserContext} from '../userContext'
-import {firestore} from '../firebase'
+import {firestore, storage} from '../firebase'
 
 import RecipeName from './RecipeName'
 import IngredientsForm from './IngredientsForm'
@@ -27,8 +27,6 @@ export default function NewRecipePage(){
     function changePicture(value){
         setPicture(value)
     }
-
-
     //sets state to new Recipe name
     function changeRecipeName(value){
         setRecipeName(value)
@@ -49,14 +47,20 @@ export default function NewRecipePage(){
         const author = user.userName
         const ingredientsList = ingredients
         const recipeDescription = description
+        const imgPath = `/recipes/${user.userID}/${recipe}`
+        
 
-        // saves recipe to: recipes/{recipeID}
+        //STORAGE SAVE: saves img to: recipes/{userID}/{recipeName}
+        storage.ref(imgPath).put(picture)
+
+        
+        //ALL RECIPES: saves recipe to: recipe/{recipeID}
         firestore.collection("recipe").add({
             RecipeName: recipe,
             Author: author,
             Ingredients: ingredientsList,
             Description: recipeDescription,
-            // Image: recipe + authorName
+            Image: `${user.userID}/${recipe}`
         })
         .then((docRef) => console.log("Recipe written with ID: ", docRef.id))
         .catch((error) => console.log("Error adding recipe: ", error))
@@ -72,13 +76,13 @@ export default function NewRecipePage(){
 
 
 
-        // adds recipe to:  users/{current user}/recipes/{recipeID}
+        //USER RECIPES: saves recipe to:  users/{current user}/recipes/{recipeID}
         firestore.collection("users").doc(user.userID).collection("recipes").add({
             RecipeName: recipe,
             Author: author,
             Ingredients: ingredientsList,
             Description: recipeDescription,
-            // Image: recipe + authorName
+            Image: `${user.userID}/${recipe}`
         })
         .then((docRef) => console.log("Recipe added to: /" + user.userName  + "/recipes/ ", docRef.id))
         .catch((error) => console.log("Error adding Recipe: ", error))
