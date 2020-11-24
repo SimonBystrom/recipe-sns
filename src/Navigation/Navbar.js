@@ -4,6 +4,7 @@ import "./css/Navbar.css"
 import {auth} from '../firebase'
 
 import {UserContext} from '../userContext'
+import SearchBar from '../Search/SearchBar'
 
 
 
@@ -11,7 +12,9 @@ import {UserContext} from '../userContext'
 
 // Set up searchbar and where Profile name will go + Sign out button
 export default function  Navbar(){
-    const {isSignedIn, user} = useContext(UserContext);
+    const {isSignedIn, user} = useContext(UserContext)
+
+
 
 
    
@@ -25,10 +28,7 @@ export default function  Navbar(){
                 
             </Link>
             <Link to="/searchResults" id="searchResults">
-                <form>
-                    <input type="text" placeholder="Search" name="search" id="searchInput"></input>
-                    <button><i className="ri-search-line"></i></button>
-                </form>
+                <SearchBar/>
             </Link>
             <Link to="/login" id="login">
                 <h5>log</h5>

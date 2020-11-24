@@ -12,7 +12,12 @@
 
 .SearchItemImg{
     grid-area: img;
-    background-color: red;
+}
+
+.SearchItemImg > img{
+    width:100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 

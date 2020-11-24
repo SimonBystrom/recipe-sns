@@ -30,13 +30,32 @@ function UserProvider({children}){
             )
         });
 
-       
+
+    const [searchInput, setSearchInput] = useState()
+    const [searchTarget, setSearchTarget] = useState(null)
+    const [searchResult, setSearchResult] = useState([])
+
+ 
+
+    function changeSearchInput(value){
+        setSearchInput(value)
+        console.log(searchInput)
+    }
+
+    function changeSearchTarget(value) {
+        setSearchTarget(value)
+        console.log("Search Target is: ", value)
+    }
 
     return(
     <UserContext.Provider
         value={ {
             isSignedIn,
-            user: {userName, userEmail, userPhotoUrl, userID}
+            user: {userName, userEmail, userPhotoUrl, userID},
+            changeSearchInput,
+            searchInput,
+            changeSearchTarget,
+            searchTarget
         }
     }>
         {children}

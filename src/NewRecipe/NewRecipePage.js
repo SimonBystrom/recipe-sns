@@ -48,6 +48,7 @@ export default function NewRecipePage(){
         const ingredientsList = ingredients
         const recipeDescription = description
         const imgPath = `/recipes/${user.userID}/${recipe}`
+   
         
 
         //STORAGE SAVE: saves img to: recipes/{userID}/{recipeName}

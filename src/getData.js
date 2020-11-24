@@ -3,20 +3,20 @@ import {firestore, storage} from "./firebase"
 
 
 // update this to be used for query for searches
-export function getRecipeData(){
+export async function getRecipeData(searchTarget){
 
-    let recipeDataArr;
-
-    firestore.collection("recipe").get()
+    const searchResultsArr = [];
+    await firestore.collection("recipe").where("RecipeName", "==", searchTarget)
+    .get()
     .then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
             // console.log(doc.id + " => " , doc.data() )
-            recipeDataArr.push(doc.data())
+            searchResultsArr.push(doc.data())
 
         })
     })
 
-    return console.log(recipeDataArr)
+    return searchResultsArr;
 }
 
 
