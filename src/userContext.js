@@ -4,7 +4,6 @@ import {auth} from './firebase'
  const UserContext = createContext()
 
 function UserProvider({children}){
-    const [isSignedIn, setIsSignedIn] = useState(undefined)
     const [userName, setUserName] = useState(null)
     const [userEmail, setUserEmail] = useState(null)
     const [userPhotoUrl, setUserPhotoUrl] = useState(null)
@@ -14,7 +13,6 @@ function UserProvider({children}){
         ()=> { 
             auth.onAuthStateChanged((user) => {
                 if(user){
-                setIsSignedIn(!!user)
                 setUserName(user.displayName)
                 setUserEmail(user.email)
                 setUserPhotoUrl(user.photoURL)
@@ -50,7 +48,6 @@ function UserProvider({children}){
     return(
     <UserContext.Provider
         value={ {
-            isSignedIn,
             user: {userName, userEmail, userPhotoUrl, userID},
             changeSearchInput,
             searchInput,

@@ -2,11 +2,11 @@ import {firestore, storage} from "./firebase"
 
 
 
-// update this to be used for query for searches
+// make querry option to search better (not only 1 specific exact search for recipe name)
 export async function getRecipeData(searchTarget){
 
     const searchResultsArr = [];
-    await firestore.collection("recipe").where("RecipeName", "==", searchTarget)
+    await firestore.collection("recipe").where("RecipeName", ">=", searchTarget)
     .get()
     .then((querySnapshot) => {
         querySnapshot.forEach((doc) => {

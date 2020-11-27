@@ -1,8 +1,8 @@
 .PictureUploadContainer{
     width: 1fr;
     background-color: white;
-    height: 400px;
-    margin: 1em 1em 1em 1em;
+    height: 475px;
+    margin: 0em 1em 1em 1em;
     border: 2px solid black;
     border-radius: 20px;
     position: relative;
@@ -21,7 +21,7 @@
 
 .FileUploadButton{
     position: absolute;
-    top: 350px;
+    top: 425px;
     left: 5px;
     
     width: 45px;

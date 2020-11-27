@@ -1,8 +1,7 @@
 .RecipeDescriptionContainer{
     width: 1fr;
-    height: 400px;
-    margin: 1em 1em 1em 1em;
-   
+    height: 250px;
+    margin: 0em 1em 1em 1em;
     border-radius: 20px;
 }
 

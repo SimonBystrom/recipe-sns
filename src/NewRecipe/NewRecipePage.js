@@ -6,11 +6,11 @@ import RecipeName from './RecipeName'
 import IngredientsForm from './IngredientsForm'
 import RecipeDescription from './RecipeDescription'
 import RecipePicture from './RecipePicture'
+import TagsForm from './TagsForm'
 
 import "./css/NewRecipe.css"
 
-
-// fix so adding a picture works (saves to storage and links said picture url)!! 
+// Add tags (for search queries)
 
 
 export default function NewRecipePage(){
@@ -20,10 +20,9 @@ export default function NewRecipePage(){
     const [recipeName, setRecipeName] = useState()
     const [ingredients, setIngredients] = useState([{ingredient: "", amount: ""}])
     const [description, setDescription] = useState()
+    const [tags, setTags] = useState([])
 
-    
-
-
+    //sets state to new Picture
     function changePicture(value){
         setPicture(value)
     }
@@ -40,6 +39,11 @@ export default function NewRecipePage(){
         setDescription(value)
     }   
 
+    function changeTags(value){
+        setTags(value)
+        console.log(tags)
+    }
+
 
     // saves recipe and profile data to the firestore 
     function saveData(){
@@ -47,6 +51,7 @@ export default function NewRecipePage(){
         const author = user.userName
         const ingredientsList = ingredients
         const recipeDescription = description
+        const tagsList = tags
         const imgPath = `/recipes/${user.userID}/${recipe}`
    
         
@@ -61,6 +66,7 @@ export default function NewRecipePage(){
             Author: author,
             Ingredients: ingredientsList,
             Description: recipeDescription,
+            Tags: tagsList,
             Image: `${user.userID}/${recipe}`
         })
         .then((docRef) => console.log("Recipe written with ID: ", docRef.id))
@@ -83,6 +89,7 @@ export default function NewRecipePage(){
             Author: author,
             Ingredients: ingredientsList,
             Description: recipeDescription,
+            Tags: tagsList,
             Image: `${user.userID}/${recipe}`
         })
         .then((docRef) => console.log("Recipe added to: /" + user.userName  + "/recipes/ ", docRef.id))
@@ -124,6 +131,11 @@ export default function NewRecipePage(){
                         <RecipeDescription 
                             changeDescription={changeDescription}
                             description={description}
+                        />
+                        <h3>Tags</h3>
+                        <TagsForm 
+                            changeTags={changeTags}
+                            tags={tags}
                         />
                     </div>
                     <button

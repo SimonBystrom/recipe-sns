@@ -1,0 +1,19 @@
+.SearchContainer{
+    display: grid;
+    grid-template-areas: "searchbar"
+                        "searchresults";
+    grid-template-columns: 100%;
+    grid-template-rows: 200px max-content;
+    
+  }
+  
+  .SearchContainer > #SearchBar {
+    grid-area: searchbar; 
+    margin-top: 1em;
+    justify-self: center;
+  }
+  
+  .SearchContainer > #SearchResults {
+    grid-area: searchresults;
+  
+  }

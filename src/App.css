@@ -2,10 +2,9 @@
   height: 100vh;
   display: grid;
   grid-template-areas:"nav nav"
-                      "side content"
                       "side content";
   grid-template-columns: 100px 1fr;
-  grid-template-rows: 80px 55px 1fr;
+  grid-template-rows: 80px  1fr;
 }
 
 .Navbar {
@@ -32,3 +31,4 @@
   background-color: white;
   
 }
+

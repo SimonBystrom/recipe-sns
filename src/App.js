@@ -9,7 +9,9 @@ import {UserProvider} from './userContext'
 import './App.css';
 import Navbar from './Navigation/Navbar'
 import Sidebar from './Navigation/Sidebar'
+import Home from './Home/Home'
 
+import SearchBar from './Search/SearchBar'
 import SearchResults from "./Search/SearchResults"
 import NewRecipePage from "./NewRecipe/NewRecipePage"
 import ProfilePage from "./Profile/ProfilePage"
@@ -30,10 +32,6 @@ function App() {
           </div>
           <div className="Content">
             <Switch>
-              <Route path="/searchResults">
-                <h1>Search</h1>
-                <SearchResults />
-              </Route>
               <Route path="/profile">
                 <ProfilePage />
               </Route>
@@ -44,7 +42,7 @@ function App() {
                   <Login />
               </Route>
               <Route path="/">
-                <h1>home</h1>
+                <Home />
               </Route>
             </Switch>
           </div>

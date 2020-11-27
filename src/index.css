@@ -17,6 +17,8 @@ code {
 a {
   text-decoration: none;
   color: black;
+  -webkit-user-drag: none;
+  -moz-user-select: none;
 }
 a:visited {
   text-decoration: none;
@@ -27,3 +29,4 @@ ul {
   margin-left: 0px;
   padding-left: 0px;
 }
+

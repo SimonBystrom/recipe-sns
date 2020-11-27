@@ -1,0 +1,32 @@
+/* Search input form */
+
+
+form > #searchInput {
+    min-width: 500px;
+    font-size: 27px;
+    height: 40px;
+    float: left;
+    
+    
+    border: 1px solid gray;
+    border-right: none;
+    border-radius: 15px 0px 0px 15px;
+    outline: none;
+    padding-left: 15px;
+}
+
+form > #searchInput:focus{
+    cursor: text;
+}
+
+form > button {
+    height: 44px;
+    border: 1px solid gray;
+    border-radius: 0px 15px 15px 0px;
+    width: 45px;
+    float: left;
+}
+
+form > button > i {
+    font-size: 20px;
+}
