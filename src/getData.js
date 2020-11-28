@@ -1,9 +1,9 @@
-import {firestore, storage} from "./firebase"
+import {firestore} from "./firebase"
 
 
 
-// make querry option to search better (not only 1 specific exact search for recipe name)
-export async function getRecipeData(searchTarget){
+// write query that accepts tags (comes in array)
+export async function getRecipeData(searchTarget, tags){
 
     const searchResultsArr = [];
     await firestore.collection("recipe").where("RecipeName", ">=", searchTarget)

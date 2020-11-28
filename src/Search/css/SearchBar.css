@@ -1,7 +1,7 @@
 /* Search input form */
 
 
-form > #searchInput {
+#searchInput {
     min-width: 500px;
     font-size: 27px;
     height: 40px;
@@ -15,11 +15,11 @@ form > #searchInput {
     padding-left: 15px;
 }
 
-form > #searchInput:focus{
+#searchInput:focus{
     cursor: text;
 }
 
-form > button {
+#searchButton {
     height: 44px;
     border: 1px solid gray;
     border-radius: 0px 15px 15px 0px;
@@ -27,6 +27,6 @@ form > button {
     float: left;
 }
 
-form > button > i {
+#searchButton > i {
     font-size: 20px;
 }

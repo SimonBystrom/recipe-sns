@@ -1,14 +1,13 @@
-import React, {useContext} from 'react'
+import React, {useState} from 'react'
 import './css/SearchBar.css'
 import {Link} from 'react-router-dom'
 
-import {UserContext} from '../userContext'
 
 
 // Add drop down menu with checkbox items for tag searches 
 
-export default function SearchBar({searchInput, changeSearchInput, changeSearchTarget}){
-    // const {changeSearchInput, searchInput, changeSearchTarget} = useContext(UserContext)
+export default function SearchBar({searchInput, changeSearchInput, changeSearchTarget, changeSearchTags, searchTags}){
+  
 
     // sets the searchBarInput in real time
     function changeInput(e){
@@ -16,20 +15,24 @@ export default function SearchBar({searchInput, changeSearchInput, changeSearchT
         changeSearchInput(value)
     }
 
-    // function addTag(e){
-    //     let prevTags = props.tags
-    //     let {value} = e.target
-    //     if(e.target.checked){
-    //         props.changeTags([...prevTags, value])
-    //     }
-    //     if(!e.target.checked){
-    //        props.changeTags(prevTags.filter(tag => tag !== value))
-    //     }
-    // }
+
+    function addTag(e){
+        let prevTags = searchTags
+        let {value} = e.target
+
+        if(e.target.checked){
+            changeSearchTags([...prevTags, value])
+        }
+        if(!e.target.checked){
+            changeSearchTags(prevTags.filter(tag => tag !== value))
+        }
+    }
 
     return(
-        <Link to="/">
-            <form>
+       
+        
+        <form>
+            <Link to="/">
                 <input 
                     type="text" 
                     placeholder="Search" 
@@ -38,20 +41,26 @@ export default function SearchBar({searchInput, changeSearchInput, changeSearchT
                     value={searchInput}
                     onChange={e => changeInput(e)}
                 ></input>
+            
                 <button
-                    onClick={() => changeSearchTarget(searchInput)}
+                    id="searchButton"
+                    onClick={() => changeSearchTarget(searchInput, searchTags)}
                 ><i className="ri-search-line"></i>
                 </button>
-
-                {/* <div className="Meats">
+            </Link>
+                <div className="Meats">
                     <input type="checkbox"  name="Beef" value="Beef" onChange={addTag}/>
                     <label for="Beef"> Beef</label>
                     <input type="checkbox"  name="Pork" value="Pork" onChange={addTag}/>
                     <label for="Pork"> Pork</label>
                     <input type="checkbox"  name="Chicken" value="Chicken" onChange={addTag}/>
                     <label for="Chicken"> Chicken</label>
-                </div> */}
-            </form>
-        </Link>
+                </div>
+              
+        </form>
+        
+       
+             
+       
     )
 }

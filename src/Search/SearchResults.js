@@ -1,27 +1,25 @@
-import React, {useState, useContext} from 'react'
+import React, {useState} from 'react'
 import {useAsync} from 'react-use'
 import "./css/SearchResults.css"
 import SearchItem from "./SearchItem"
 
-import {UserContext} from '../userContext'
 import {getRecipeData} from '../getData'
 
-// When searchQuery is built, make it work
 
-export default function  SearchResults({searchTarget}){
-    // const {searchTarget} = useContext(UserContext)
+
+export default function  SearchResults({searchTargetName, searchTargetTags}){
     const [searchResults, setSearchResults] = useState([])
 
     useAsync(async () => {
-        if (searchTarget !== null) {
-            const searchData = await getRecipeData(searchTarget)
+        if (searchTargetName !== null || searchTargetTags !== null) {
+            const searchData = await getRecipeData(searchTargetName, searchTargetTags)
             setSearchResults(searchData)
             console.log(searchResults)
         } else {
             // set the search results to render nothing?? 
         }
 
-    },[searchTarget])
+    },[searchTargetName, searchTargetTags])
   
     
 

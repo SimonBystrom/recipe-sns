@@ -7,16 +7,24 @@ import SearchResults from '../Search/SearchResults'
 
 export default function Home(){
     const [searchInput, setSearchInput] = useState()
-    const [searchTarget, setSearchTarget] = useState(null)
+    const [searchTags, setSearchTags] = useState([])
+    const [searchTargetName, setSearchTargetName] = useState(null)
+    const [searchTargetTags, setSearchTargetTags] = useState(null)
 
     function changeSearchInput(value){
         setSearchInput(value)
-        console.log(searchInput)
+        console.log("Search Input: " , searchInput)
     }
 
-    function changeSearchTarget(value) {
-        setSearchTarget(value)
-        console.log("Search Target is: ", value)
+    function changeSearchTags(value){
+        setSearchTags(value)
+        console.log("Search Tags: ", searchTags)
+    }
+
+    function changeSearchTarget(nameInput, tagsInput) {
+        setSearchTargetName(nameInput)
+        setSearchTargetTags(tagsInput)
+        console.log("Search Target is: ", nameInput , tagsInput)
     }
 
     return(
@@ -26,11 +34,14 @@ export default function Home(){
                     searchInput={searchInput}
                     changeSearchInput={changeSearchInput}
                     changeSearchTarget={changeSearchTarget}
+                    changeSearchTags={changeSearchTags}
+                    searchTags={searchTags}
                 />
                 {/* Tags */}
             </div>
             <SearchResults 
-                searchTarget={searchTarget}
+                searchTargetName={searchTargetName}
+                searchTargetTags={searchTargetTags}
             id="SearchResults"/>
         </div>
     )
