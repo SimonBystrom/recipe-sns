@@ -8,8 +8,8 @@ import {getRecipeData} from '../getData'
 
 // When searchQuery is built, make it work
 
-export default function  SearchResults(){
-    const {searchTarget} = useContext(UserContext)
+export default function  SearchResults({searchTarget}){
+    // const {searchTarget} = useContext(UserContext)
     const [searchResults, setSearchResults] = useState([])
 
     useAsync(async () => {
