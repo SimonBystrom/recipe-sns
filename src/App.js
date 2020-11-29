@@ -11,8 +11,7 @@ import Navbar from './Navigation/Navbar'
 import Sidebar from './Navigation/Sidebar'
 import Home from './Home/Home'
 
-import SearchBar from './Search/SearchBar'
-import SearchResults from "./Search/SearchResults"
+
 import NewRecipePage from "./NewRecipe/NewRecipePage"
 import ProfilePage from "./Profile/ProfilePage"
 import Login from './Login/Login'

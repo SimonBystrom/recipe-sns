@@ -15,7 +15,7 @@ export default function PictureUpload(props){
 
     return (
         <div className="PictureUploadContainer">
-            {imgSource ? <img src={imgSource}></img> : null}
+            {imgSource ? <img src={imgSource} alt=""></img> : null}
             <label htmlFor="pictureUpload" className="FileUploadButton">
                 <i className="ri-add-line"></i>
             </label>

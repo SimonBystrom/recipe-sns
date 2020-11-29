@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import firebase from 'firebase'
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth'
-import {auth, firestore} from '../firebase'
+import {auth} from '../firebase'
 
 
 
@@ -40,7 +40,7 @@ const uiConfig = {
             {isSignedIn &&
                 <div >
                 Hello {auth.currentUser.displayName}. You are now signed In!
-                <a  onClick={() => auth.signOut()}>Sign-out</a>
+                <button  onClick={() => auth.signOut()}>Sign-out</button>
                 </div>
       }
     

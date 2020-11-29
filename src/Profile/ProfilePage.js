@@ -5,7 +5,6 @@ import LikedRecipes from "./LikedRecipes"
 import {UserContext} from '../userContext'
 
 import {getUserRecipeData} from "../getData"
-import {storage} from '../firebase'
 
 /* 
     NEEDS:
@@ -29,7 +28,7 @@ export default function ProfilePage(){
 // Maps over userRecipes Array and renders AccountRecipes with values from Array
    let accountRecipeRender = () => {
        if(userRecipes.length > 0) {
-           return userRecipes.map(item => {
+           return userRecipes.map((item, index) => {
                return (
                <AccountRecipes 
                     Image={item.Image}
@@ -37,7 +36,7 @@ export default function ProfilePage(){
                     Description={item.Description}
                     Ingredients={item.Ingredients}
                     RecipeName={item.RecipeName}
-                    Key={10000 * Math.random()}
+                    key={index}
                ></AccountRecipes>)
            })
        } else {

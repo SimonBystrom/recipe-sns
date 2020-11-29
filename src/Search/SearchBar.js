@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React from 'react'
 import './css/SearchBar.css'
 import {Link} from 'react-router-dom'
 
@@ -50,11 +50,11 @@ export default function SearchBar({searchInput, changeSearchInput, changeSearchT
             </Link>
                 <div className="Meats">
                     <input type="checkbox"  name="Beef" value="Beef" onChange={addTag}/>
-                    <label for="Beef"> Beef</label>
+                    <label htmlFor="Beef"> Beef</label>
                     <input type="checkbox"  name="Pork" value="Pork" onChange={addTag}/>
-                    <label for="Pork"> Pork</label>
+                    <label htmlFor="Pork"> Pork</label>
                     <input type="checkbox"  name="Chicken" value="Chicken" onChange={addTag}/>
-                    <label for="Chicken"> Chicken</label>
+                    <label htmlFor="Chicken"> Chicken</label>
                 </div>
               
         </form>

@@ -12,7 +12,7 @@ export default function RecipeComponent(props){
 
     return(
         <div>
-            <img src={props.img}></img>
+            <img src={props.img} alt=""></img>
             <div>
                 {/* <i>star<i>
                   <p>likes<p> */}

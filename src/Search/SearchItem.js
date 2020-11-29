@@ -20,7 +20,7 @@ export default function SearchItem(props){
         <div className="SearchItemContainer">
             {imgPath !== null &&  
                 <div className="SearchItemImg">
-                    <img src={imgPath}></img>
+                    <img src={imgPath} alt=""></img>
                 </div>
             }
             {

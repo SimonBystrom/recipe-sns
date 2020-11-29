@@ -21,7 +21,7 @@ export default function IngredientsForm(props){
 
     // removes input field and data for input field from the ingredient list
     function removeInputField(index) {
-        const ingredientsList = [... ingredients]
+        const ingredientsList = [...ingredients]
         ingredientsList.splice(index, 1)
         props.changeIngredients(ingredientsList)
     }
