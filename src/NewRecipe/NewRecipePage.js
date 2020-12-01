@@ -8,18 +8,20 @@ import RecipeDescription from './RecipeDescription'
 import RecipePicture from './RecipePicture'
 import TagsForm from './TagsForm'
 
+import saveData from '../saveData'
+
 import "./css/NewRecipe.css"
 
 // Add tags (for search queries)
-
+// recipeName, userName, ingredients, description, tags, userID, picture
 
 export default function NewRecipePage(){
     const {isSignedIn, user} = useContext(UserContext)
 
-    const [picture, setPicture] = useState()
-    const [recipeName, setRecipeName] = useState()
+    const [picture, setPicture] = useState(null)
+    const [recipeName, setRecipeName] = useState('')
     const [ingredients, setIngredients] = useState([{ingredient: "", amount: ""}])
-    const [description, setDescription] = useState()
+    const [description, setDescription] = useState('')
     const [tags, setTags] = useState([])
 
     //sets state to new Picture
@@ -44,7 +46,8 @@ export default function NewRecipePage(){
         console.log(tags)
     }
 
-
+ 
+    // ?? MOVE THIS FUNCTION ELSEWHERE? 
     // saves recipe and profile data to the firestore 
     function saveData(){
         const recipe = recipeName
@@ -53,6 +56,7 @@ export default function NewRecipePage(){
         const recipeDescription = description
         const tagsList = tags
         const imgPath = `/recipes/${user.userID}/${recipe}`
+
    
         
 
@@ -67,9 +71,19 @@ export default function NewRecipePage(){
             Ingredients: ingredientsList,
             Description: recipeDescription,
             Tags: tagsList,
-            Image: `${user.userID}/${recipe}`
+            Image: `${user.userID}/${recipe}`,
+            Id: ''
         })
-        .then((docRef) => console.log("Recipe written with ID: ", docRef.id))
+        .then((docRef) => {
+            console.log("Recipe written with ID: ", docRef.id)
+            firestore.collection("recipe").doc(docRef.id).update({
+                Id: docRef.id
+            })
+            .then(() => console.log("Added docRef ID to recipe")
+            )
+            .catch((error) => console.log("Error adding docRef ID: ", error))
+            
+        })
         .catch((error) => console.log("Error adding recipe: ", error))
 
 
@@ -140,7 +154,7 @@ export default function NewRecipePage(){
                     </div>
                     <button
                     className="SaveRecipeButton"
-                    onClick={saveData}
+                    onClick={() => saveData()}
                     >Save</button>
                 
                 </div>

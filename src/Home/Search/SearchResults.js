@@ -3,11 +3,11 @@ import {useAsync} from 'react-use'
 import "./css/SearchResults.css"
 import SearchItem from "./SearchItem"
 
-import {getRecipeData} from '../getData'
+import {getRecipeData} from '../../getData'
 
 
 
-export default function  SearchResults({searchTargetName, searchTargetTags}){
+export default function  SearchResults({searchTargetName, searchTargetTags, changeRecipePath}){
     const [searchResults, setSearchResults] = useState([])
 
     useAsync(async () => {
@@ -23,14 +23,16 @@ export default function  SearchResults({searchTargetName, searchTargetTags}){
   
     
 
-    let results = searchResults.map(item => 
+    let results = searchResults.map((item, index) => 
             <SearchItem 
                             Image={item.Image}
                             Author={item.Author}
                             Description={item.Description}
                             Ingredients={item.Ingredients}
                             RecipeName={item.RecipeName}
-                            Key={10000 * Math.random()}
+                            Id={item.Id}
+                            Key={index}
+                            changeRecipePath={changeRecipePath}
             ></SearchItem>)
 
     return (

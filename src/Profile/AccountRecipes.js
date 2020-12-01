@@ -22,7 +22,7 @@ export default function AccountRecipes(props){
 
 
     return(
-        <div key={props.key}>
+        <div >
             {!imgPath && <p>loading..</p>}
             {imgPath && <img style={{width: "400px", height: "400px"}}src={imgPath} alt=""></img>}
         </div>

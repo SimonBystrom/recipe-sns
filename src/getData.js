@@ -6,15 +6,36 @@ import {firestore} from "./firebase"
 export async function getRecipeData(searchTarget, tags){
 
     const searchResultsArr = [];
-    await firestore.collection("recipe").where("RecipeName", ">=", searchTarget)
-    .get()
-    .then((querySnapshot) => {
-        querySnapshot.forEach((doc) => {
-            // console.log(doc.id + " => " , doc.data() )
-            searchResultsArr.push(doc.data())
 
+    //only matches exact recipe name
+    if(searchTarget){
+        await firestore.collection("recipe").where("RecipeName", "==", searchTarget)
+        .get()
+        .then((querySnapshot) => {
+            querySnapshot.forEach((doc) => {
+                // console.log(doc.id + " => " , doc.data() )
+                searchResultsArr.push(doc.data())
+    
+            })
         })
-    })
+        
+    }
+
+    //fetches all recipes with tags that match any of the tags saved to recipe/Tags: []  (up to 10 tags)
+    if(tags.length > 0){
+        await firestore.collection("recipe").where("Tags", "array-contains-any", tags)
+        .get()
+        .then((querySnapshot) => {
+            querySnapshot.forEach((doc) => {
+                // console.log(doc.id + " => " , doc.data() )
+                searchResultsArr.push(doc.data())
+    
+            })
+        })
+
+    }
+   
+   
 
     return searchResultsArr;
 }
