@@ -7,7 +7,7 @@ import {getRecipeData} from '../../getData'
 
 
 
-export default function  SearchResults({searchTargetName, searchTargetTags, changeRecipePath}){
+export default function  SearchResults({searchTargetName, searchTargetTags, changeRecipePath, changeSelectedRecipeData}){
     const [searchResults, setSearchResults] = useState([])
 
     useAsync(async () => {
@@ -33,6 +33,7 @@ export default function  SearchResults({searchTargetName, searchTargetTags, chan
                             Id={item.Id}
                             Key={index}
                             changeRecipePath={changeRecipePath}
+                            changeSelectedRecipeData={changeSelectedRecipeData}
             ></SearchItem>)
 
     return (

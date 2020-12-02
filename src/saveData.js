@@ -24,8 +24,17 @@ export default function saveData(recipeName, userName, ingredients, description,
         Tags: tagsList,
         Image: `${userID}/${recipe}`
     })
-    .then((docRef) => console.log("Recipe written with ID: ", docRef.id))
-    .catch((error) => console.log("Error adding recipe: ", error))
+    .then((docRef) => {
+                console.log("Recipe written with ID: ", docRef.id)
+                firestore.collection("recipe").doc(docRef.id).update({
+                    Id: docRef.id
+                })
+                .then(() => console.log("Added docRef ID to recipe")
+                )
+                .catch((error) => console.log("Error adding docRef ID: ", error))
+                
+            })
+            .catch((error) => console.log("Error adding recipe: ", error))
 
 
 

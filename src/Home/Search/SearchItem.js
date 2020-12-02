@@ -19,7 +19,19 @@ export default function SearchItem(props){
 
     return(
         <Link to={`/${props.Id}`}>
-            <div className="SearchItemContainer" onClick={() => props.changeRecipePath(props.Id)}>
+            <div className="SearchItemContainer" onClick={() => {
+                                                                  
+                                                                        props.changeRecipePath(props.Id)
+                                                                        props.changeSelectedRecipeData({
+                                                                        Image: props.Image,
+                                                                        Author: props.Author,
+                                                                        Description: props.Description,
+                                                                        Ingredients: props.Ingredients,
+                                                                        RecipeName: props.RecipeName
+                                                                    })
+                                                                    
+                                                                    
+                                                                    }}>
                 {imgPath !== null &&  
                     <div className="SearchItemImg">
                         <img src={imgPath} alt=""></img>

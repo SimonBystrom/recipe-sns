@@ -9,6 +9,8 @@ import SearchBar from './Search/SearchBar'
 import SearchResults from './Search/SearchResults'
 
 
+// Fix so reloading the home page when on the selected recipe path won't reset state to null making the page not load properly
+
 export default function Home(){
     const [searchInput, setSearchInput] = useState("")
     const [searchTags, setSearchTags] = useState([])
@@ -16,9 +18,10 @@ export default function Home(){
     const [searchTargetTags, setSearchTargetTags] = useState(null)
     const [recipeIDpath, setRecipeIDpath] = useState(null)
 
+    const [selectedRecipeData, setSelectedRecipeData] = useState(null)
+
     function changeSearchInput(value){
         setSearchInput(value)
-        console.log("Search Input: " , searchInput)
     }
 
     function changeSearchTags(value){
@@ -37,6 +40,11 @@ export default function Home(){
         console.log(recipeIDpath)
     }
 
+    function changeSelectedRecipeData(value){
+        setSelectedRecipeData(value)
+        console.log(selectedRecipeData)
+    }
+
     return(
 
         <Switch>
@@ -51,18 +59,19 @@ export default function Home(){
                             searchTags={searchTags}
                             
                         />
-                        {/* Tags */}
                     </div>
                     <SearchResults 
                         searchTargetName={searchTargetName}
                         searchTargetTags={searchTargetTags}
                         changeRecipePath={changeRecipePath}
+                        changeSelectedRecipeData={changeSelectedRecipeData}
                     id="SearchResults"/>
                 </div>
             </Route>
             <Route path={`/${recipeIDpath}`}>
-                Make this route show the search Item with that was clicked!
+                {/* Make this route show the search Item with that was clicked! */}
                 <div>You are now at recipe Path {recipeIDpath}</div>
+    <div>{ selectedRecipeData ? selectedRecipeData.RecipeName : null}{console.log(selectedRecipeData)}</div>
             </Route>
 
         </Switch>

@@ -47,69 +47,6 @@ export default function NewRecipePage(){
     }
 
  
-    // ?? MOVE THIS FUNCTION ELSEWHERE? 
-    // saves recipe and profile data to the firestore 
-    function saveData(){
-        const recipe = recipeName
-        const author = user.userName
-        const ingredientsList = ingredients
-        const recipeDescription = description
-        const tagsList = tags
-        const imgPath = `/recipes/${user.userID}/${recipe}`
-
-   
-        
-
-        //STORAGE SAVE: saves img to: recipes/{userID}/{recipeName}
-        storage.ref(imgPath).put(picture)
-
-        
-        //ALL RECIPES: saves recipe to: recipe/{recipeID}
-        firestore.collection("recipe").add({
-            RecipeName: recipe,
-            Author: author,
-            Ingredients: ingredientsList,
-            Description: recipeDescription,
-            Tags: tagsList,
-            Image: `${user.userID}/${recipe}`,
-            Id: ''
-        })
-        .then((docRef) => {
-            console.log("Recipe written with ID: ", docRef.id)
-            firestore.collection("recipe").doc(docRef.id).update({
-                Id: docRef.id
-            })
-            .then(() => console.log("Added docRef ID to recipe")
-            )
-            .catch((error) => console.log("Error adding docRef ID: ", error))
-            
-        })
-        .catch((error) => console.log("Error adding recipe: ", error))
-
-
-
-        // adds user (if not created) to: users/user  
-        firestore.collection("users").doc(user.userID).set({
-            Username: user.userName,
-        } , {merge: true})
-        .then((docRef) => console.log("User info added to: users/", docRef.id))
-        .catch((error) => console.log("Error adding user: ", error))
-
-
-
-        //USER RECIPES: saves recipe to:  users/{current user}/recipes/{recipeID}
-        firestore.collection("users").doc(user.userID).collection("recipes").add({
-            RecipeName: recipe,
-            Author: author,
-            Ingredients: ingredientsList,
-            Description: recipeDescription,
-            Tags: tagsList,
-            Image: `${user.userID}/${recipe}`
-        })
-        .then((docRef) => console.log("Recipe added to: /" + user.userName  + "/recipes/ ", docRef.id))
-        .catch((error) => console.log("Error adding Recipe: ", error))
-
-    }
 
 
     return(
@@ -154,7 +91,7 @@ export default function NewRecipePage(){
                     </div>
                     <button
                     className="SaveRecipeButton"
-                    onClick={() => saveData()}
+                    onClick={() => saveData(recipeName, user.userName, ingredients, description, tags, user.userID, picture)}
                     >Save</button>
                 
                 </div>
