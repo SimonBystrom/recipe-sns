@@ -57,3 +57,16 @@ export async function getUserRecipeData(userID){
     
     return recipeArr
 }
+
+
+export async function getSelectedRecipe(recipeID){
+ 
+  
+    let recipe
+      await firestore.collection("recipe").doc(recipeID).get()
+      .then(doc => {
+          recipe = doc.data
+      })
+    console.log(recipe)
+    return recipe
+}

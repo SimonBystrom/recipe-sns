@@ -1,9 +1,12 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import {
     Switch,
     Route,
+    useLocation
   } from "react-router-dom"
+import {useAsync} from 'react-use'
 import './css/Home.css'
+import {getSelectedRecipe} from '../getData'
 
 import SearchBar from './Search/SearchBar'
 import SearchResults from './Search/SearchResults'
@@ -11,15 +14,21 @@ import SearchResults from './Search/SearchResults'
 
 // Fix so reloading the home page when on the selected recipe path won't reset state to null making the page not load properly
 
+// Set a firestore query that finds the exact match of current path and sets that as the path ->
+// takes the info from returned object and display
+
 export default function Home(){
     const [searchInput, setSearchInput] = useState("")
     const [searchTags, setSearchTags] = useState([])
     const [searchTargetName, setSearchTargetName] = useState(null)
     const [searchTargetTags, setSearchTargetTags] = useState(null)
-    const [recipeIDpath, setRecipeIDpath] = useState(null)
 
+    const [pathName, setPathName] = useState(useLocation().pathname)
     const [selectedRecipeData, setSelectedRecipeData] = useState(null)
 
+  useEffect(() => {
+      
+  })
     function changeSearchInput(value){
         setSearchInput(value)
     }
@@ -35,15 +44,20 @@ export default function Home(){
         console.log("Search Target is: ", nameInput , tagsInput)
     }
 
-    function changeRecipePath(value){
-        setRecipeIDpath(value)
-        console.log(recipeIDpath)
+    function changePathName(value){
+        setPathName("/" + value)
     }
 
-    function changeSelectedRecipeData(value){
-        setSelectedRecipeData(value)
+
+    useAsync(async () => {
+        if(pathName.length > 2){
+            // sets recipeID to match the path (that is the same as the ID of recipe), then removes the "/"
+            // let recipeID = pathName.split("/")[1]
+            // const data = await getSelectedRecipe(recipeID)
+            // setSelectedRecipeData(data)
+        }
         console.log(selectedRecipeData)
-    }
+    }, [])
 
     return(
 
@@ -63,15 +77,15 @@ export default function Home(){
                     <SearchResults 
                         searchTargetName={searchTargetName}
                         searchTargetTags={searchTargetTags}
-                        changeRecipePath={changeRecipePath}
-                        changeSelectedRecipeData={changeSelectedRecipeData}
-                    id="SearchResults"/>
+                        changePathName={changePathName}
+                        id="SearchResults"/>
                 </div>
             </Route>
-            <Route path={`/${recipeIDpath}`}>
+            <Route path={pathName}>
                 {/* Make this route show the search Item with that was clicked! */}
-                <div>You are now at recipe Path {recipeIDpath}</div>
-    <div>{ selectedRecipeData ? selectedRecipeData.RecipeName : null}{console.log(selectedRecipeData)}</div>
+    <div>You are now at recipe Path {pathName}{console.log(selectedRecipeData)}</div>
+                
+   
             </Route>
 
         </Switch>

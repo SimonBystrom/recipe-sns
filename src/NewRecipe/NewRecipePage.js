@@ -46,6 +46,16 @@ export default function NewRecipePage(){
         console.log(tags)
     }
 
+    function cleanUp(){
+        setPicture(null)
+        setRecipeName('')
+        setIngredients([{ingredient: "", amount: ""}])
+        setDescription('')
+        setTags([])
+
+        return console.log("Recipe Saved and page cleared")
+    }
+
  
 
 
@@ -91,7 +101,11 @@ export default function NewRecipePage(){
                     </div>
                     <button
                     className="SaveRecipeButton"
-                    onClick={() => saveData(recipeName, user.userName, ingredients, description, tags, user.userID, picture)}
+                    onClick={() => {
+                                    saveData(recipeName, user.userName, ingredients, description, tags, user.userID, picture)
+                                    cleanUp()
+                                
+                                }}
                     >Save</button>
                 
                 </div>
