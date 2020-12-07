@@ -3,7 +3,7 @@ import './css/RecipePicture.css'
 
 
 export default function PictureUpload(props){
-    const [imgSource, setImgSource] = useState()
+    const [imgSource, setImgSource] = useState(props.currentPicture)
 
     function handleChange(e){
         let picture = e.target.files[0]

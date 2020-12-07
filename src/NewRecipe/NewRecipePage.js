@@ -1,6 +1,5 @@
 import React, {useState, useContext} from 'react'
 import {UserContext} from '../userContext'
-import {firestore, storage} from '../firebase'
 
 import RecipeName from './RecipeName'
 import IngredientsForm from './IngredientsForm'
@@ -40,12 +39,12 @@ export default function NewRecipePage(){
     function changeDescription(value){
         setDescription(value)
     }   
-
+    //sets state to new Tags
     function changeTags(value){
         setTags(value)
         console.log(tags)
     }
-
+// FIX CLEANUP (PICTURE AND TAGS ARE NOT CLEANING UP)
     function cleanUp(){
         setPicture(null)
         setRecipeName('')
@@ -55,9 +54,6 @@ export default function NewRecipePage(){
 
         return console.log("Recipe Saved and page cleared")
     }
-
- 
-
 
     return(
 
@@ -78,6 +74,7 @@ export default function NewRecipePage(){
                         <h3>Picture</h3>
                         <RecipePicture
                             changePicture={changePicture}
+                            currentPicture={picture}
                         />
                     </div>
                     <div className="RecipeIngredients">

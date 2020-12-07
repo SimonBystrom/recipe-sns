@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React, {useState} from 'react'
 import {
     Switch,
     Route,
@@ -10,12 +10,11 @@ import {getSelectedRecipe} from '../getData'
 
 import SearchBar from './Search/SearchBar'
 import SearchResults from './Search/SearchResults'
+import SelectedRecipe from './Search/SelectedRecipe'
 
 
-// Fix so reloading the home page when on the selected recipe path won't reset state to null making the page not load properly
 
-// Set a firestore query that finds the exact match of current path and sets that as the path ->
-// takes the info from returned object and display
+// FIX THE RE-RENDER ISSUE
 
 export default function Home(){
     const [searchInput, setSearchInput] = useState("")
@@ -26,9 +25,15 @@ export default function Home(){
     const [pathName, setPathName] = useState(useLocation().pathname)
     const [selectedRecipeData, setSelectedRecipeData] = useState(null)
 
-  useEffect(() => {
-      
-  })
+    useAsync(async () => {
+        // sets recipeID to match the path (that is the same as the ID of recipe), then removes the "/"
+         let recipeID = pathName.split("/")[1]
+         const data = await getSelectedRecipe(recipeID)
+         setSelectedRecipeData(data)
+
+    }, [pathName])
+
+
     function changeSearchInput(value){
         setSearchInput(value)
     }
@@ -49,18 +54,9 @@ export default function Home(){
     }
 
 
-    useAsync(async () => {
-        if(pathName.length > 2){
-            // sets recipeID to match the path (that is the same as the ID of recipe), then removes the "/"
-            // let recipeID = pathName.split("/")[1]
-            // const data = await getSelectedRecipe(recipeID)
-            // setSelectedRecipeData(data)
-        }
-        console.log(selectedRecipeData)
-    }, [])
+  
 
     return(
-
         <Switch>
             <Route exact path="/">
                     <div className="SearchContainer">
@@ -83,7 +79,19 @@ export default function Home(){
             </Route>
             <Route path={pathName}>
                 {/* Make this route show the search Item with that was clicked! */}
-    <div>You are now at recipe Path {pathName}{console.log(selectedRecipeData)}</div>
+                <div>
+                    {selectedRecipeData ? 
+                        <SelectedRecipe 
+                            Author={selectedRecipeData.Author}
+                            Descriptions={selectedRecipeData.Descriptions}
+                            Image={selectedRecipeData.Image}
+                            Ingredients={selectedRecipeData.Ingredients}
+                            RecipeName={selectedRecipeData.RecipeName}
+                            
+                        >
+                        </SelectedRecipe> : <p>loading...</p>}
+                    
+                </div>
                 
    
             </Route>

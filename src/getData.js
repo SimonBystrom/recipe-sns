@@ -62,11 +62,15 @@ export async function getUserRecipeData(userID){
 export async function getSelectedRecipe(recipeID){
  
   
-    let recipe
+    let recipe = null;
       await firestore.collection("recipe").doc(recipeID).get()
       .then(doc => {
-          recipe = doc.data
+          if(doc.exists){
+            recipe = doc.data()
+          } else {
+              console.log("No such document")
+          }
+          
       })
-    console.log(recipe)
     return recipe
 }
