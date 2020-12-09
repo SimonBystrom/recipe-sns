@@ -11,6 +11,7 @@ import {getSelectedRecipe} from '../getData'
 import SearchBar from './Search/SearchBar'
 import SearchResults from './Search/SearchResults'
 import SelectedRecipe from './Search/SelectedRecipe'
+import Loading from '../Components/Loading'
 
 
 
@@ -89,7 +90,7 @@ export default function Home(){
                             RecipeName={selectedRecipeData.RecipeName}
                             
                         >
-                        </SelectedRecipe> : <p>loading...</p>}
+                        </SelectedRecipe> : <Loading />}
                     
                 </div>
                 

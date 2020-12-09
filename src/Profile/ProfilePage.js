@@ -6,6 +6,8 @@ import {UserContext} from '../userContext'
 
 import {getUserRecipeData} from "../getData"
 
+import Loading from '../Components/Loading'
+
 /* 
     NEEDS:
     Design and setup to feed props (from liked recipes and Account recipes -> JSX comps)
@@ -40,7 +42,7 @@ export default function ProfilePage(){
                ></AccountRecipes>)
            })
        } else {
-           return <p>Loading...</p>
+           return <Loading/>
        }
    }
 

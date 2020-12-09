@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from 'react'
 import {storage} from '../../firebase'
 
+import Loading from '../../Components/Loading'
+
 
 
 // FIX THE RE-RENDER ISSUE
@@ -29,7 +31,7 @@ function SelectedRecipe(props){
     .catch(error => 
         console.log(error))
 
-    let ingredients = props.Ingredients.map((item, index) => {
+    let ingredientsList = props.Ingredients.map((item, index) => {
         return(
         <div key={index}>
             <h3>{item.ingredient}</h3>
@@ -46,15 +48,14 @@ function SelectedRecipe(props){
                         <div className="SearchItemImg">
                             <img src={imgPath} alt=""></img>
                         </div>
-                    : <p>loading...</p> }
+                    : null}
                 <h2>{props.RecipeName}</h2>
                 <p>{props.Description}</p>
-                <div>
-                    {ingredients}
-                </div>
+                
+                    {ingredientsList}
             </div>
             : 
-            <p>loading...</p>
+            <Loading />
             }
             
         </div>
