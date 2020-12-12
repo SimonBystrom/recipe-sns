@@ -1,6 +1,6 @@
 import {useState, useRef, useEffect} from 'react'
 
-export default function(){
+export default function useHover(){
     const [isHovered, setIsHovered] = useState(false)
     const ref = useRef(null)
 
