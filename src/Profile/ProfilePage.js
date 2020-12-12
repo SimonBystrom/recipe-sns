@@ -42,7 +42,7 @@ export default function ProfilePage(){
                ></AccountRecipes>)
            })
        } else {
-           return <Loading/>
+           return null
        }
    }
 

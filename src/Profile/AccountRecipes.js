@@ -1,6 +1,8 @@
 import React, {useState} from 'react'
 import {storage} from '../firebase'
 
+import Loading from '../Components/Loading'
+
 
 /*
     NEEDS:
@@ -23,8 +25,8 @@ export default function AccountRecipes(props){
 
     return(
         <div >
-            {!imgPath && <p>loading..</p>}
-            {imgPath && <img style={{width: "400px", height: "400px"}}src={imgPath} alt=""></img>}
+            
+            {imgPath ? <img style={{width: "400px", height: "400px"}}src={imgPath} alt=""></img> : <Loading />}
         </div>
     )
 }
