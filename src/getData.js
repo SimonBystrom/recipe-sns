@@ -52,9 +52,17 @@ export async function getUserRecipeData(userID){
               recipeArr.push(dataPoint.data())
           })
       })
-      
-    
-    
+    return recipeArr
+}
+
+export async function getUserLikedRecipeData(userID){
+    const recipeArr = []
+      await firestore.collection("users").doc(userID).collection("favorites").get()
+      .then(querySnapshot => {
+          querySnapshot.forEach(dataPoint => {
+              recipeArr.push(dataPoint.data())
+          })
+      })
     return recipeArr
 }
 
@@ -74,3 +82,4 @@ export async function getSelectedRecipe(recipeID){
       })
     return recipe
 }
+

@@ -7,7 +7,7 @@ import RecipeDescription from './RecipeDescription'
 import RecipePicture from './RecipePicture'
 import TagsForm from './TagsForm'
 
-import saveData from '../saveData'
+import {saveRecipe} from '../saveData'
 
 import "./css/NewRecipe.css"
 
@@ -99,7 +99,7 @@ export default function NewRecipePage(){
                     <button
                     className="SaveRecipeButton"
                     onClick={() => {
-                                    saveData(recipeName, user.userName, ingredients, description, tags, user.userID, picture)
+                                    saveRecipe(recipeName, user.userName, ingredients, description, tags, user.userID, picture)
                                     cleanUp()
                                 
                                 }}

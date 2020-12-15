@@ -4,7 +4,7 @@ import AccountRecipes from './AccountRecipes'
 import LikedRecipes from "./LikedRecipes"
 import {UserContext} from '../userContext'
 
-import {getUserRecipeData} from "../getData"
+import {getUserRecipeData, getUserLikedRecipeData} from "../getData"
 
 import Loading from '../Components/Loading'
 
@@ -20,11 +20,15 @@ import Loading from '../Components/Loading'
 export default function ProfilePage(){
     const {isSignedIn, user} = useContext(UserContext)
     const [userRecipes, setUserRecipes] = useState([])
+    const [likedRecipes, setLikedRecipes] = useState([])
 
 
    useAsync(async () => {
         const userRecipesResults =  await getUserRecipeData(user.userID)
+        const likedRecipesResults = await getUserLikedRecipeData(user.userID)
             setUserRecipes(userRecipesResults)
+            setLikedRecipes(likedRecipesResults)
+
    },[user.userID])
 
 // Maps over userRecipes Array and renders AccountRecipes with values from Array
@@ -46,6 +50,24 @@ export default function ProfilePage(){
        }
    }
 
+   let likedRecipeRender = () => {
+    if(likedRecipes.length > 0) {
+        return likedRecipes.map((item, index) => {
+            return (
+            <LikedRecipes 
+                 Image={item.Image}
+                 Author={item.Author}
+                 Description={item.Description}
+                 Ingredients={item.Ingredients}
+                 RecipeName={item.RecipeName}
+                 key={index}
+            ></LikedRecipes>)
+        })
+    } else {
+        return null
+    }
+}
+
     return(
         <div>
             {!isSignedIn && 
@@ -59,9 +81,8 @@ export default function ProfilePage(){
                 <h5>Email: {user.userEmail}</h5>
                 <h2>Your Recipes</h2>
                 {accountRecipeRender()}
-                {}
                 <h2>Liked Recipes</h2>
-                <LikedRecipes />
+                {likedRecipeRender()}
                 
             </div>
             }

@@ -1,18 +1,32 @@
-import React from 'react'
+import React, {useState} from 'react'
+import {storage} from '../firebase'
 
-/* 
+import Loading from '../Components/Loading'
+
+
+/*
     NEEDS:
-    take props from profiles liked recipe section 
-    Feed props into RecipeComp
-    Display in carousel 
-    
+ 
+    display all recipes in an carousel 
 */
 
 export default function LikedRecipes(props){
+    const [imgPath, setImgPath] = useState()
 
-    return (
-        <div>
+    //Creates storage Reference with img path from props
+    const storageRef = storage.ref('recipes/').child(props.Image)
 
+    // downloads Useable imgPath from the storage reference and sets imgPath to said value
+    storageRef.getDownloadURL()
+    .then(url => {
+        setImgPath(url)
+    })
+
+
+    return(
+        <div >
+            
+            {imgPath ? <img style={{width: "150px", height: "150px"}}src={imgPath} alt=""></img> : <Loading />}
         </div>
     )
 }

@@ -1,7 +1,8 @@
 import {firestore, storage} from './firebase'
 
 
-export default function saveData(recipeName, userName, ingredients, description, tags, userID, picture){
+
+export function saveRecipe(recipeName, userName, ingredients, description, tags, userID, picture){
     const recipe = recipeName
     const author = userName
     const ingredientsList = ingredients
@@ -41,6 +42,7 @@ export default function saveData(recipeName, userName, ingredients, description,
     // adds user (if not created) to: users/user  
     firestore.collection("users").doc(userID).set({
         Username: userName,
+
     } , {merge: true})
     .then((docRef) => console.log("User info added to: users/", docRef.id))
     .catch((error) => console.log("Error adding user: ", error))
@@ -56,7 +58,25 @@ export default function saveData(recipeName, userName, ingredients, description,
         Tags: tagsList,
         Image: `${userID}/${recipe}`
     })
-    .then((docRef) => console.log("Recipe added to: /" + userName  + "/recipes/ ", docRef.id))
+    .then((docRef) => console.log("Recipe added to: /" + userName  + "/recipes/", docRef.id))
     .catch((error) => console.log("Error adding Recipe: ", error))
+
+}
+
+export async function addFavorite(recipeID, userID) {
+    let recipe = null;
+      await firestore.collection("recipe").doc(recipeID).get()
+      .then(doc => {
+          if(doc.exists){
+            recipe = doc.data()
+          } else {
+              console.log("No such document")
+          } 
+      })
+
+    firestore.collection("users").doc(userID).collection("favorites").add(
+        recipe
+    )
+    .then((docRef) => console.log("Added recipe to favorites: " + docRef.id))
 
 }

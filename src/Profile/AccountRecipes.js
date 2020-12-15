@@ -26,7 +26,7 @@ export default function AccountRecipes(props){
     return(
         <div >
             
-            {imgPath ? <img style={{width: "400px", height: "400px"}}src={imgPath} alt=""></img> : <Loading />}
+            {imgPath ? <img style={{width: "150px", height: "150px"}}src={imgPath} alt=""></img> : <Loading />}
         </div>
     )
 }
