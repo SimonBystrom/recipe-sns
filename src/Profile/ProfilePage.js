@@ -7,6 +7,7 @@ import {UserContext} from '../userContext'
 import {getUserRecipeData, getUserLikedRecipeData} from "../getData"
 
 import Loading from '../Components/Loading'
+import Slider from '../Slider'
 
 /* 
     NEEDS:
@@ -77,12 +78,13 @@ export default function ProfilePage(){
             } 
             {isSignedIn && 
                 <div>
-                <h1>Hello {user.userName}</h1>
-                <h5>Email: {user.userEmail}</h5>
-                <h2>Your Recipes</h2>
-                {accountRecipeRender()}
-                <h2>Liked Recipes</h2>
-                {likedRecipeRender()}
+                    <h1>Hello {user.userName}</h1>
+                    <h5>Email: {user.userEmail}</h5>
+                    <h2>Your Recipes</h2>
+                    {userRecipes.length > 0 ? <Slider options={{imagesLoaded: true}}>{accountRecipeRender()}</Slider> : null}
+                    
+                    <h2>Liked Recipes</h2>
+                    {likedRecipes.length > 0 ? <Slider>{likedRecipeRender()}</Slider> : null}
                 
             </div>
             }

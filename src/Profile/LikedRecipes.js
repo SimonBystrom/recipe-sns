@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import {storage} from '../firebase'
 
 import Loading from '../Components/Loading'
+import './css/RecipeImages.css'
 
 
 /*
@@ -26,7 +27,7 @@ export default function LikedRecipes(props){
     return(
         <div >
             
-            {imgPath ? <img style={{width: "150px", height: "150px"}}src={imgPath} alt=""></img> : <Loading />}
+            {imgPath ? <img className="RecipeImage" src={imgPath} alt=""></img> : <Loading />}
         </div>
     )
 }
