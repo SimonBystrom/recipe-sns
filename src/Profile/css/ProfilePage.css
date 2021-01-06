@@ -1,0 +1,48 @@
+.ProfilePage-Container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#button-Container{
+    display: flex;
+    flex-direction: row;
+
+    margin: 2em 0 0 0;
+}
+#profileButtonImg{
+    font-size: 35px;
+}
+
+.accountRecipesButton{
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background-color: teal;
+    cursor: pointer;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin: 0 3em 0 0;
+}
+
+.likedRecipesButton{
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background-color: red;
+    cursor: pointer;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    
+}
+
+#profileButton{
+    display: none;
+}
