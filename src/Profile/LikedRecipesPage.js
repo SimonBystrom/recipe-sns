@@ -1,13 +1,17 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import {useAsync} from 'react-use'
 import LikedRecipes from './LikedRecipes'
 import {getUserLikedRecipeData} from "../getData"
+
+import Loading from '../Components/Loading'
+import './css/RecipesPages.css'
 
 
 // STYLE THE RENDERED DIV
 
 export default function LikedRecipePage(props){
     const [likedRecipes, setLikedRecipes] = useState([])
+    const [loading, setLoading] = useState(true)
 
     useAsync(async () => {
             const likedRecipesResults = await getUserLikedRecipeData(props.userID)
@@ -36,9 +40,16 @@ export default function LikedRecipePage(props){
     }
 }
 
+useEffect(() => {
+    setTimeout(() => {
+        setLoading(false)
+    }, 300)
+})
+
     return(
-        <div>
-            {likedRecipes.length > 0 ? likedRecipeRender() : <h3>No Liked Recipes</h3>}
+        <div className='RecipesPages-Container'>
+            {loading ? <Loading/> : (!loading && likedRecipes.length > 0) ? likedRecipeRender() : <h3>No Liked Recipes</h3>}
+            
         </div>
     )
 }

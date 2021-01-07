@@ -1,5 +1,7 @@
 .DotsContainer{
     display: flex;
+    justify-self: center;
+    margin: 2em 0 0 0;
 }
 
 .DotsContainer > div{

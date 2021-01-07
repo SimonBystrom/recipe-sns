@@ -1,15 +1,10 @@
 import React, {useState} from 'react'
 import {storage} from '../firebase'
 
-import Loading from '../Components/Loading'
+
 import './css/RecipeImages.css'
 
 
-/*
-    NEEDS:
- 
-    display all recipes in an carousel 
-*/
 
 export default function AccountRecipes(props){
     const [imgPath, setImgPath] = useState()
@@ -25,9 +20,8 @@ export default function AccountRecipes(props){
 
 
     return(
-        <div >
-            
-            {imgPath ? <img className="RecipeImage" src={imgPath} alt=""></img> : <Loading />}
+        <div className='RecipeImage-Container'>
+            {imgPath ? <img  src={imgPath} alt=""></img> : null}
         </div>
     )
 }

@@ -25,9 +25,9 @@ export default function LikedRecipes(props){
 
 
     return(
-        <div >
+        <div className='RecipeImage-Container'>
             
-            {imgPath ? <img className="RecipeImage" src={imgPath} alt=""></img> : <Loading />}
+            {imgPath ? <img  src={imgPath} alt=""></img> : null}
         </div>
     )
 }

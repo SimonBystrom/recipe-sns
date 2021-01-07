@@ -1,0 +1,11 @@
+.RecipesPages-Container{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-template-rows: auto;
+    grid-gap: 15px;
+    margin: 4em 1em 0 1em;
+}
+
+.RecipePages-Loading{
+    margin: 2em 0 0 2em;
+}

@@ -1,13 +1,17 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import {useAsync} from 'react-use'
 import AccountRecipes from './AccountRecipes'
 import {getUserRecipeData} from "../getData"
+import Loading from '../Components/Loading'
+
+import './css/RecipesPages.css'
 
 // STYLE THE RENDERED DIV
 
 
 export default function AccountRecipePage(props){
     const [userRecipes, setUserRecipes] = useState([])
+    const [loading, setLoading] = useState(true)
 
     useAsync(async () => {
         const userRecipesResults =  await getUserRecipeData(props.userID)
@@ -34,9 +38,16 @@ export default function AccountRecipePage(props){
         }
     }
 
+    useEffect(() => {
+        setTimeout(() => {
+            setLoading(false)
+        }, 300)
+    })
+
     return(
-        <div>
-            {userRecipes.length > 0 ? accountRecipeRender() : <h3>No Account Recipes</h3>}
+        <div className='RecipesPages-Container'>
+            
+            {loading ? <Loading/> : (!loading && userRecipes.length > 0) ? accountRecipeRender() : <h3>No Account Recipes</h3>}
         </div>
     )
 }
