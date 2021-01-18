@@ -6,6 +6,7 @@ import {
     Link
   } from "react-router-dom"
 
+  
 import './css/ProfilePage.css' 
 import AccountRecipePage from './AccountRecipePage'
 import LikedRecipePage from './LikedRecipesPage'
@@ -49,9 +50,7 @@ export default function ProfilePage(){
                             <LikedRecipePage userID={user.userID}></LikedRecipePage>
                         </Route>
                     </Switch>
-                </div>
-
-                
+                </div>                
         }
 </div>
     )

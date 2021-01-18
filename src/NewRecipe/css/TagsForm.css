@@ -5,3 +5,10 @@
     border: 2px solid black;
     border-radius: 20px;
 }
+
+.Tags-Container{
+    height: inherit;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

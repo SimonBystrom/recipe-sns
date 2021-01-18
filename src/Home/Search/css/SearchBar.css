@@ -22,11 +22,21 @@
 #searchButton {
     height: 44px;
     border: 1px solid gray;
+    border-left: none;
     border-radius: 0px 15px 15px 0px;
     width: 45px;
     float: left;
+    background-color: white;
+    cursor: pointer;
 }
 
 #searchButton > i {
     font-size: 20px;
+}
+
+.Tags-Container{
+    border: 1px solid transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

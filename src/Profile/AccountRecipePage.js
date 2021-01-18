@@ -6,7 +6,7 @@ import Loading from '../Components/Loading'
 
 import './css/RecipesPages.css'
 
-// STYLE THE RENDERED DIV
+
 
 
 export default function AccountRecipePage(props){
